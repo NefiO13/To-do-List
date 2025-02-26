@@ -16,3 +16,47 @@ document.getElementById('addTaskBtn').addEventListener('click', function () {
     }
 
 })
+
+//Function to display tasks//
+function displayTask() {
+    //Select the unordered list//
+    let taskList = document.getElementById('taskList')
+
+    //clear the  enlisting//
+    taskList.innerHTML = ''
+
+    //Loop through each task//
+    tasks.forEach((tasks, index) => {
+        //Create a new list element for each tasks//
+        let li = document.createElement('li')
+
+        //Add Classes//
+        li.classList.add(
+            'list-group-item',
+            'd-flex',
+            'justify-content-between',
+            'align-items-center'
+        )
+        //engine of the entire loop //Set the inner html of the list element with tasks text amd a remove button//
+        li.innerHTML = `${tasks}<button class='btn btn-dark btn-sm' onclick='removeTask(${index})'√ </button>`
+
+        taskList.appendChild(li)
+
+
+
+
+
+
+    })
+
+}
+
+
+
+function removeTask(index) {
+    //remove the task at the given index from the array//
+    tasks.splice(index, 1)
+
+    //call the display function tasks//
+    displayTasks()
+}
