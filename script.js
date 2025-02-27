@@ -60,3 +60,11 @@ function removeTask(index) {
     //call the display function tasks//
     displayTasks()
 }
+
+//Add Event Listener//
+document.getElementById('clearTaskBtn').addEventListener('click', function () {
+    //Empty the task array//
+    tasks = []
+    //Call the function to update the task list display//
+    displayTasks()
+})
