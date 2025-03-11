@@ -17,10 +17,10 @@ function addTask() {
 
     }
 
-})
+}
 
 //Function to display tasks//
-function displayTask() {
+function displayTasks() {
     //Select the unordered list//
     let taskList = document.getElementById('taskList')
 
