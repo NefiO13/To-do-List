@@ -1,24 +1,26 @@
-//Array to store tasks//
-let tasks = []
+let tasks = [];
 
-//add event listener to add tasks to button//
-document.getElementById('addTaskBtn').addEventListener('click', function () {
-    //storing text value from input box as a variable taskInput//
-    let taskInput = document.getElementById('taskInput').value
-    //Pushes the value to the bottom of the list. displays tasks and clears taskinput after clicking the task btn//
+document.getElementById('addTaskBtn').addEventListener('click', addTask);
+document.getElementById('taskInput').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') addTask();
+});
+document.getElementById('clearTaskBtn').addEventListener('click', clearTasks);
+
+function addTask() {
+    let taskInput = document.getElementById('taskInput').value.trim();
     if (taskInput) {
 
         tasks.push(taskInput)
         document.getElementById('taskInput').value = ''
 
         displayTasks()
+
     }
-});
 
-
+})
 
 //Function to display tasks//
-function displayTasks() {
+function displayTask() {
     //Select the unordered list//
     let taskList = document.getElementById('taskList')
 
@@ -41,23 +43,30 @@ function displayTasks() {
         li.innerHTML = `${tasks}<button class='btn btn-dark btn-sm' onclick='removeTask(${index})'√ </button>`
 
         taskList.appendChild(li)
+
+
+
+
+
+
     })
 
-
-
-    function removeTask(index) {
-        //remove the task at the given index from the array//
-        tasks.splice(index, 1)
-
-        //call the display function tasks//
-        displayTasks()
-    }
-
-    //Add Event Listener//
-    document.getElementById('clearTaskBtn').addEventListener('click', function () {
-        //Empty the task array//
-        tasks = []
-        //Call the function to update the task list display//
-        displayTasks()
-    })
 }
+
+
+
+function removeTask(index) {
+    //remove the task at the given index from the array//
+    tasks.splice(index, 1)
+
+    //call the display function tasks//
+    displayTasks();
+}
+
+//Add Event Listener//
+document.getElementById('clearTaskBtn').addEventListener('click', function () {
+    //Empty the task array//
+    tasks = []
+    //Call the function to update the task list display//
+    displayTasks()
+})
