@@ -41,12 +41,6 @@ function displayTask() {
         li.innerHTML = `${tasks}<button class='btn btn-dark btn-sm' onclick='removeTask(${index})'√ </button>`
 
         taskList.appendChild(li)
-
-
-
-
-
-
     })
 
 }
