@@ -12,13 +12,13 @@ document.getElementById('addTaskBtn').addEventListener('click', function () {
         document.getElementById('taskInput').value = ''
 
         displayTasks()
-
     }
+});
 
-})
+
 
 //Function to display tasks//
-function displayTask() {
+function displayTasks() {
     //Select the unordered list//
     let taskList = document.getElementById('taskList')
 
@@ -43,22 +43,21 @@ function displayTask() {
         taskList.appendChild(li)
     })
 
+
+
+    function removeTask(index) {
+        //remove the task at the given index from the array//
+        tasks.splice(index, 1)
+
+        //call the display function tasks//
+        displayTasks()
+    }
+
+    //Add Event Listener//
+    document.getElementById('clearTaskBtn').addEventListener('click', function () {
+        //Empty the task array//
+        tasks = []
+        //Call the function to update the task list display//
+        displayTasks()
+    })
 }
-
-
-
-function removeTask(index) {
-    //remove the task at the given index from the array//
-    tasks.splice(index, 1)
-
-    //call the display function tasks//
-    displayTasks()
-}
-
-//Add Event Listener//
-document.getElementById('clearTaskBtn').addEventListener('click', function () {
-    //Empty the task array//
-    tasks = []
-    //Call the function to update the task list display//
-    displayTasks()
-})
